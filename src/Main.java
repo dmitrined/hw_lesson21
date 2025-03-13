@@ -17,24 +17,28 @@ public class Main {
         sendMailAll(mailDeliveryServiceList);
         System.out.println("--------------------");
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Выберите номер способа доставки:");
+        System.out.println("Выберите номер способа отправки письма:");
         System.out.println("1. DHL");
         System.out.println("2. Email");
         System.out.println("3. Почтовый голубь");
         String dhl = "1";
         String email = "2";
         String pigeon = "3";
+        String text = "Ок! Вы выбрали способ отправки: ";
         String result = scanner.nextLine();
         if (result.equals(dhl)) {
-            System.out.println("Ок! Вы выбрали способ доставки: " + dhlService.serviceTitle());
+            System.out.println(text + dhlService.serviceTitle());
+            dhlService.sendMail();
         }
         if (result.equals(email)) {
-            System.out.println("Ок! Вы выбрали способ доставки: " + emailService.serviceTitle());
-        }
-        if (result.equals(pigeon)) {
-            System.out.println("Ок! Вы выбрали способ доставки: " + pigeonService.serviceTitle());
+            System.out.println(text + emailService.serviceTitle());
+            emailService.sendMail();
         }
 
+        if (result.equals(pigeon)) {
+            System.out.println(text + pigeonService.serviceTitle());
+            pigeonService.sendMail();
+        }
 
     }
 
